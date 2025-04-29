@@ -38,123 +38,326 @@ DROP VIEW view_name;
 
 **Question 1**
 --
--- Paste Question 1 here
+From the following tables, write a SQL query to find those salespeople who earned the maximum commission. Return ord_no, purch_amt, ord_date, and salesman_id.
 
+salesman table
+<pre>
+name             type
+---------------  ---------------
+salesman_id      numeric(5)
+name                 varchar(30)
+city                    varchar(15)
+commission       decimal(5,2)
+</pre>
+orders table
+<pre>
+name             type
+---------------  --------
+order_no         int
+purch_amt        real
+order_date       text
+customer_id      int
+salesman_id      int
+</pre>
+![alt text](image.png)
 ```sql
--- Paste your SQL code below for Question 1
+SELECT o.ord_no, o.purch_amt, o.ord_date, o.salesman_id
+FROM orders o
+JOIN salesman s ON o.salesman_id = s.salesman_id
+WHERE s.commission = (
+    SELECT MAX(commission)
+    FROM salesman
+);
+
 ```
 
 **Output:**
 
-![Output1](output.png)
+![alt text](image-1.png)
 
 **Question 2**
 ---
--- Paste Question 2 here
+Write a query to display all the customers whose ID is the difference between the salesperson ID of Mc Lyon and 2001.
 
+salesman table
+<pre>
+name             type
+---------------  ---------------
+salesman_id      numeric(5)
+name                 varchar(30)
+city                    varchar(15)
+commission       decimal(5,2)
+</pre>
+customer table
+<pre>
+name         type
+-----------  ----------
+customer_id  int
+cust_name    text
+city         text
+grade        int
+salesman_id  int
+</pre>
+![alt text](image-2.png)
 ```sql
--- Paste your SQL code below for Question 2
+SELECT c.customer_id, c.cust_name, c.city, c.grade, c.salesman_id
+FROM customer c
+WHERE c.customer_id = (
+    SELECT s.salesman_id - 2001
+    FROM salesman s
+    WHERE s.name = 'Mc Lyon'
+);
+
 ```
 
 **Output:**
 
-![Output2](output.png)
+![alt text](image-3.png)
 
 **Question 3**
 ---
--- Paste Question 3 here
+Write a SQL query to retrieve all columns from the CUSTOMERS table for customers whose salary is greater than $4500.
 
+Sample table: CUSTOMERS
+<pre>
+ID          NAME        AGE         ADDRESS     SALARY
+----------  ----------  ----------  ----------  ----------
+
+1          Ramesh       32             Ahmedabad     2000
+2          Khilan       25             Delhi         1500
+3          Kaushik      23             Kota          2000
+4          Chaitali     25             Mumbai        6500
+5          Hardik       27             Bhopal        8500
+6          Komal        22             Hyderabad     4500
+7          Muffy        24             Indore        10000
+</pre>
+![alt text](image-5.png)
 ```sql
--- Paste your SQL code below for Question 3
+SELECT *
+FROM CUSTOMERS
+WHERE SALARY > 4500;
+
 ```
 
 **Output:**
 
-![Output3](output.png)
+![alt text](image-4.png)
 
 **Question 4**
 ---
--- Paste Question 4 here
+Write a SQL query that retrieves the names of students and their corresponding grades, where the grade is equal to the maximum grade achieved in each subject.
 
+Sample table: GRADES (attributes: student_id, student_name, subject, grade)
+
+![alt text](image-6.png)
 ```sql
--- Paste your SQL code below for Question 4
+SELECT student_name, grade
+FROM GRADES g
+WHERE grade = (
+    SELECT MAX(grade)
+    FROM GRADES
+    WHERE subject = g.subject
+);
+
 ```
 
 **Output:**
 
-![Output4](output.png)
+![alt text](image-7.png)
 
 **Question 5**
 ---
--- Paste Question 5 here
+Write a SQL query to retrieve all columns from the CUSTOMERS table for customers whose salary is EQUAL TO $1500.
 
+Sample table: CUSTOMERS
+<pre>
+ID          NAME        AGE         ADDRESS     SALARY
+----------  ----------  ----------  ----------  ----------
+
+1          Ramesh       32             Ahmedabad     2000
+2          Khilan       25             Delhi         1500
+3          Kaushik      23             Kota          2000
+4          Chaitali     25             Mumbai        6500
+5          Hardik       27             Bhopal        8500
+6          Komal        22             Hyderabad     4500
+7          Muffy        24             Indore        10000
+</pre>
+![alt text](image-10.png)
 ```sql
--- Paste your SQL code below for Question 5
+SELECT *
+FROM CUSTOMERS
+WHERE SALARY = 1500;
+
 ```
 
 **Output:**
 
-![Output5](output.png)
+![alt text](image-8.png)
 
 **Question 6**
 ---
--- Paste Question 6 here
+Write a SQL query to retrieve all columns from the CUSTOMERS table for customers whose salary is greater than $1500.
 
+Sample table: CUSTOMERS
+<pre>
+ID          NAME        AGE         ADDRESS     SALARY
+----------  ----------  ----------  ----------  ----------
+
+1          Ramesh       32            Ahmedabad   2000
+2          Khilan       25            Delhi       1500
+3          Kaushik      23            Kota        2000
+4          Chaitali     25            Mumbai      6500
+5          Hardik       27            Bhopal      8500
+6          Komal        22            Hyderabad   4500
+7          Muffy        24            Indore      10000
+</pre>
+![alt text](image-9.png)
 ```sql
--- Paste your SQL code below for Question 6
+SELECT *
+FROM CUSTOMERS
+WHERE SALARY > 1500;
+
 ```
 
 **Output:**
 
-![Output6](output.png)
+![alt text](image-11.png)
 
 **Question 7**
 ---
--- Paste Question 7 here
+From the following tables write a SQL query to find all orders generated by New York-based salespeople. Return ord_no, purch_amt, ord_date, customer_id, salesman_id.
 
+salesman table
+<pre>
+name             type
+---------------  ---------------
+salesman_id      numeric(5)
+name                 varchar(30)
+city                    varchar(15)
+commission       decimal(5,2)
+</pre>
+orders table
+<pre>
+name             type
+---------------  --------
+order_no         int
+purch_amt        real
+order_date       text
+customer_id      int
+salesman_id      int
+</pre>
+![alt text](image-12.png)
 ```sql
--- Paste your SQL code below for Question 7
+SELECT o.ord_no, o.purch_amt, o.ord_date, o.customer_id, o.salesman_id
+FROM orders o
+JOIN salesman s ON o.salesman_id = s.salesman_id
+WHERE s.city = 'New York';
+
 ```
 
 **Output:**
 
-![Output7](output.png)
+![alt text](image-13.png)
 
 **Question 8**
 ---
--- Paste Question 8 here
+From the following tables write a SQL query to find all orders generated by London-based salespeople. Return ord_no, purch_amt, ord_date, customer_id, salesman_id.
 
+salesman table
+<pre>
+name             type
+---------------  ---------------
+salesman_id      numeric(5)
+name                 varchar(30)
+city                    varchar(15)
+commission       decimal(5,2)
+</pre>
+orders table
+<pre>
+name             type
+---------------  --------
+order_no         int
+purch_amt        real
+order_date       text
+customer_id      int
+salesman_id      int
+</pre>
+![alt text](image-14.png)
 ```sql
--- Paste your SQL code below for Question 8
+SELECT o.ord_no, o.purch_amt, o.ord_date, o.customer_id, o.salesman_id
+FROM orders o
+JOIN salesman s ON o.salesman_id = s.salesman_id
+WHERE s.city = 'London';
+
 ```
 
 **Output:**
 
-![Output8](output.png)
+![alt text](image-15.png)
 
 **Question 9**
 ---
--- Paste Question 9 here
+From the following tables, write a SQL query to find all the orders issued by the salesman 'Paul Adam'. Return ord_no, purch_amt, ord_date, customer_id and salesman_id.
 
+salesman table
+<pre>
+name             type
+---------------  ---------------
+salesman_id      numeric(5)
+name                 varchar(30)
+city                    varchar(15)
+commission       decimal(5,2)
+</pre>
+orders table
+
+<pre>
+name             type
+---------------  --------
+order_no         int
+purch_amt        real
+order_date       text
+customer_id      int
+salesman_id      int
+</pre>
+![alt text](image-16.png)
 ```sql
--- Paste your SQL code below for Question 9
+SELECT o.ord_no, o.purch_amt, o.ord_date, o.customer_id, o.salesman_id
+FROM orders o
+JOIN salesman s ON o.salesman_id = s.salesman_id
+WHERE s.name = 'Paul Adam';
+
 ```
 
 **Output:**
 
-![Output9](output.png)
+![alt text](image-17.png)
 
 **Question 10**
 ---
--- Paste Question 10 here
+Write a SQL query to Retrieve the medications with dosages equal to the highest dosage
+
+Table Name: Medications (attributes: medication_id, medication_name, dosage)
+![alt text](image-18.png)
 
 ```sql
--- Paste your SQL code below for Question 10
+SELECT 
+    medication_id,
+    medication_name,
+    dosage
+FROM 
+    Medications
+WHERE 
+    dosage = (
+        SELECT 
+            MAX(dosage)
+        FROM 
+            Medications
+    );
+
 ```
 
 **Output:**
-
-![Output10](output.png)
+![alt text](image-19.png)
 
 
 ## RESULT
