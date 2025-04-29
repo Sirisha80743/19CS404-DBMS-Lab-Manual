@@ -105,123 +105,189 @@ CREATE TABLE Table_Name (
 
 **Question 1**
 --
--- Paste Question 1 here
+Create a table named ProjectAssignments with the following constraints:
+* AssignmentID as INTEGER should be the primary key.
+* EmployeeID as INTEGER should be a foreign key referencing Employees(EmployeeID).
+* ProjectID as INTEGER should be a foreign key referencing Projects(ProjectID).
+* AssignmentDate as DATE should be NOT NULL.
 
 ```sql
--- Paste your SQL code below for Question 1
+create table  ProjectAssignments(
+    AssignmentID INTEGER primary Key,
+    EmployeeID INTEGER,
+    ProjectID INTEGER,
+    AssignmentDate DATE NOT NULL,
+    foreign key (EmployeeID) references Employees(EmployeeID),
+    foreign key (ProjectID) references Projects(ProjectID)
+)
 ```
 
 **Output:**
 
-![Output1](output.png)
-
+![alt text](image-1.png)
 **Question 2**
 ---
--- Paste Question 2 here
+Create a table named Shipments with the following constraints:
+* ShipmentID as INTEGER should be the primary key.
+* ShipmentDate as DATE.
+* SupplierID as INTEGER should be a foreign key referencing Suppliers(SupplierID).
+* OrderID as INTEGER should be a foreign key referencing Orders(OrderID).
 
 ```sql
--- Paste your SQL code below for Question 2
+Create table Shipments (
+  ShipmentID INTEGER Primary Key,
+  ShipmentDate DATE,
+  SupplierID INTEGER,
+  OrderID INTEGER,
+  foreign Key (SupplierID) references Suppliers(SupplierID),
+  foreign Key (OrderID) references Orders(OrderID)
+)
 ```
 
 **Output:**
 
-![Output2](output.png)
+![alt text](image-2.png)
 
 **Question 3**
 ---
--- Paste Question 3 here
+Create a table named Department with the following constraints:
+* DepartmentID as INTEGER should be the primary key.
+* DepartmentName as TEXT should be unique and not NULL.
+* Location as TEXT.
 
 ```sql
--- Paste your SQL code below for Question 3
+create table Department (
+  DepartmentID INTEGER primary Key,
+  DepartmentName TEXT unique not NULL,
+  Location TEXT
+);
 ```
 
 **Output:**
 
-![Output3](output.png)
+![alt text](image-3.png)
 
 **Question 4**
 ---
--- Paste Question 4 here
+Insert all products from Discontinued_products into Products.
+
+Table attributes are ProductID, ProductName, Price, Stock
 
 ```sql
--- Paste your SQL code below for Question 4
+insert into Products(ProductID, ProductName, Price, Stock) select ProductID, ProductName, Price, Stock from Discontinued_products;
 ```
 
 **Output:**
 
-![Output4](output.png)
+![alt text](image-4.png)
 
 **Question 5**
 ---
--- Paste Question 5 here
+Insert the following employees into the Employee table:
+
+<pre>EmployeeID  Name        Position    Department  Salary
+----------  ----------  ----------  ----------  ----------
+2           John Smith  Developer   IT          75000
+3           Anna Bell   Designer    Marketing   68000
+</pre>
 
 ```sql
--- Paste your SQL code below for Question 5
+insert into Employee (EmployeeID, Name, Position, Department, Salary) values (2,'John Smith' ,'Developer','IT', 75000),(3,'Anna Bell','Designer','Marketing',68000); 
 ```
 
 **Output:**
 
-![Output5](output.png)
+![alt text](image-5.png)
 
 **Question 6**
 ---
--- Paste Question 6 here
+Write an SQL query to add a new column email of type TEXT to the Student_details table, and ensure that this column cannot contain NULL values and make default value as 'Invalid'
+
+ 
 
 ```sql
--- Paste your SQL code below for Question 6
+alter table Student_details add column email TEXT NOT NULL default 'Invalid';
 ```
 
 **Output:**
 
-![Output6](output.png)
+![alt text](image-6.png)
 
 **Question 7**
 ---
--- Paste Question 7 here
+Insert a customer with CustomerID 301, Name Michael Jordan, Address 123 Maple St, City Chicago, and ZipCode 60616 into the Customers table.
 
 ```sql
--- Paste your SQL code below for Question 7
+Insert a customer with CustomerID 301, Name Michael Jordan, Address 123 Maple St, City Chicago, and ZipCode 60616 into the Customers table.
 ```
 
 **Output:**
 
-![Output7](output.png)
+![alt text](image-7.png)
 
 **Question 8**
 ---
--- Paste Question 8 here
+Create a table named Bonuses with the following constraints:
+* BonusID as INTEGER should be the primary key.
+* EmployeeID as INTEGER should be a foreign key referencing Employees(EmployeeID).
+* BonusAmount as REAL should be greater than 0.
+* BonusDate as DATE.
+* Reason as TEXT should not be NULL.
 
 ```sql
--- Paste your SQL code below for Question 8
+Create table Bonuses(
+  BonusID INTEGER primary Key,
+  EmployeeID INTEGER ,
+  BonusAmount REAL check (BonusAmount>0),
+  BonusDate DATE,
+  Reason TEXT NOT NULL,
+  foreign key (EmployeeID) references Employees(EmployeeID)
+);
 ```
 
 **Output:**
 
-![Output8](output.png)
+![alt text](image-10.png)
 
 **Question 9**
 ---
--- Paste Question 9 here
+Write a SQL query to add birth_date attribute as timestamp (datatype) in the table customer 
 
+Sample table: customer
+<pre>
+ customer_id |   cust_name    |    city    | grade | salesman_id 
+-------------+----------------+------------+-------+-------------
+        3002 | Nick Rimando   | New York   |   100 |        5001
+        3007 | Brad Davis     | New York   |   200 |        5001
+        3005 | Graham Zusi    | California |   200 |        5002
+</pre>
 ```sql
--- Paste your SQL code below for Question 9
+alter table customer add column birth_date timestamp;
 ```
 
 **Output:**
 
-![Output9](output.png)
+![alt text](image-8.png)
 
 **Question 10**
 ---
--- Paste Question 10 here
+Create a table named Tasks with the following columns:
+
+* TaskID as INTEGER
+* TaskName as TEXT
+* DueDate as DATE
 
 ```sql
--- Paste your SQL code below for Question 10
+Create table Tasks (
+  TaskID INTEGER,
+  TaskName TEXT,
+  DueDate DATE
+);
 ```
 
 **Output:**
 
-![Output10](output.png)
+![alt text](image-9.png)
 
 
 ## RESULT
