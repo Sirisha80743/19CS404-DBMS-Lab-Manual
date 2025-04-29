@@ -38,124 +38,194 @@ HAVING condition;
 
 **Question 1**
 --
--- Paste Question 1 here
+How many medical records were created in each month?
+
+Sample table:MedicalRecords Table
+![alt text](image-3.png)
 
 ```sql
--- Paste your SQL code below for Question 1
+select 
+STRFTIME('%Y-%m',Date) AS Month,
+COUNT(*) AS TotalRecords 
+From MedicalRecords GROUP BY Month ORDER BY Month;
 ```
 
 **Output:**
 
-![Output1](output.png)
+![alt text](image-1.png)
 
 **Question 2**
 ---
--- Paste Question 2 here
+How many patients are there in each city?
 
+Sample table: Patients Table
+![alt text](image-2.png)
 ```sql
--- Paste your SQL code below for Question 2
+SELECT Address, COUNT(*) AS TotalPatients
+FROM Patients
+GROUP BY Address;
 ```
 
 **Output:**
 
-![Output2](output.png)
+![alt text](image-20.png)
 
 **Question 3**
 ---
--- Paste Question 3 here
+Write SQL query to extract the email domain from each patient's email address and count the number of patients with the same email domain.
 
+Sample table: Patients Table
+![alt text](image-4.png)
 ```sql
--- Paste your SQL code below for Question 3
+SELECT SUBSTR(Email,INSTR(Email,'@')+1) AS EmailDomain, COUNT(*) AS TotalPatients FROM Patients GROUP BY EmailDomain;
 ```
 
 **Output:**
 
-![Output3](output.png)
+![alt text](image-5.png)
 
 **Question 4**
 ---
--- Paste Question 4 here
+Write a SQL query to Calculate the average email length (in characters) for people who lives in Mumbai city
 
+Table: customer
+<pre>
+name        type
+----------  ----------
+id          INTEGER
+name        TEXT   
+city        TEXT
+email       TEXT
+phone       INTEGER
+</pre>
+![alt text](image-6.png)
 ```sql
--- Paste your SQL code below for Question 4
+SELECT AVG(LENGTH(email)) AS avg_email_length_below_30  FROM customer WHERE city='Mumbai';
 ```
 
 **Output:**
 
-![Output4](output.png)
+![alt text](image-7.png)
 
 **Question 5**
 ---
--- Paste Question 5 here
+Write a SQL query to  find the average salary of all employees?
 
+Table: employee
+<pre>
+name        type
+----------  ----------
+id          INTEGER
+name        TEXT
+age         INTEGER
+city        TEXT
+income      INTEGER
+</pre>
+![alt text](image-8.png)
 ```sql
--- Paste your SQL code below for Question 5
+SELECT AVG(income) AS Average_Salary FROM employee;
 ```
 
 **Output:**
 
-![Output5](output.png)
+![alt text](image-9.png)
 
 **Question 6**
 ---
--- Paste Question 6 here
+Write a SQL query to find the total amount of fruits with a unit type of 'LB'.
 
+Note: Inventory attribute contains amount of fruits
+
+Table: fruits
+<pre>
+name        type
+----------  ----------
+id          INTEGER
+name        TEXT
+unit        TEXT
+inventory   INTEGER
+price       REAL
+ </pre>
+![alt text](image-10.png)
 ```sql
--- Paste your SQL code below for Question 6
+SELECT SUM(inventory) AS total FROM fruits WHERE unit='LB';
 ```
 
 **Output:**
 
-![Output6](output.png)
-
+![alt text](image-11.png)
 **Question 7**
 ---
--- Paste Question 7 here
+Write a SQL query to find What is the age difference between the youngest and oldest employee in the company.
 
+Table: employee
+<pre>
+name        type
+----------  ----------
+id          INTEGER
+name        TEXT
+age         INTEGER
+city        TEXT
+income      INTEGER
+</pre>
+![alt text](image-12.png)
 ```sql
--- Paste your SQL code below for Question 7
+SELECT MAX(age)-MIN(age) AS age_difference FROM employee;
 ```
 
 **Output:**
 
-![Output7](output.png)
+![alt text](image-13.png)
 
 **Question 8**
 ---
--- Paste Question 8 here
+Write the SQL query that achieves the selection of category and calculates the sum of the product of price and category ID as Revenue for each category from the "products" table, and includes only those products where the total revenue is greater than 25.
+
+Sample table: products
+![alt text](image-14.png)
 
 ```sql
--- Paste your SQL code below for Question 8
+SELECT category_id,
+SUM(price*category_id) AS Revenue FROM products
+GROUP BY category_id
+HAVING Revenue>25;
 ```
 
 **Output:**
 
-![Output8](output.png)
+![alt text](image-15.png)
 
 **Question 9**
 ---
--- Paste Question 9 here
+Write the SQL query that achieves the grouping of data by occupation, calculates the total work hours for each occupation, and excludes occupations where the total work hour sum is not greater than 20.
+
+Sample table: employee1
+![alt text](image-16.png)
 
 ```sql
--- Paste your SQL code below for Question 9
+SELECT occupation,SUM(workhour) 
+FROM employee1
+GROUP BY occupation HAVING SUM(workhour)>20;
 ```
 
 **Output:**
 
-![Output9](output.png)
+![alt text](image-17.png)
 
 **Question 10**
 ---
--- Paste Question 10 here
+Write the SQL query that achieves the grouping of data by city, calculates the total income for each city, and includes only those cities where the total income sum is greater than 200,000.
 
+Sample table: employee
+![alt text](image-18.png)
 ```sql
--- Paste your SQL code below for Question 10
+SELECT city, SUM(income) AS Income FROM employee
+GROUP BY city
+HAVING SUM(income)>200000;
 ```
 
 **Output:**
-
-![Output10](output.png)
-
+![alt text](image-19.png)
 
 ## RESULT
 Thus, the SQL queries to implement aggregate functions, GROUP BY, and HAVING clause have been executed successfully.
