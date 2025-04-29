@@ -189,6 +189,7 @@ WHERE
 **Output:**
 
 ![alt text](image-6.png)
+
 **Question 4**
 ---
 Write the SQL query that achieves the selection of the date of birth from the "patients" table (aliased as "p") and all columns from the "appointments" table (aliased as "a"), with an inner join on the "patient_id" column and a condition filtering for patients with the first name 'Alice'.
@@ -266,6 +267,8 @@ WHERE
 **Question 6**
 ---
 Write the SQL query that achieves the selection of the "cust_name" column from the "customer" table (aliased as "c"), with a left join on the "customer_id" column.
+
+
 ![alt text](image-11.png)
 
 ```sql
