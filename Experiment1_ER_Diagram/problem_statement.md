@@ -48,25 +48,50 @@ Design a database for patient management, appointments, medical records, and bil
 # ER Diagram Submission - Student Name
 
 ## Scenario Chosen:
-University / Hospital (choose one)
+Hospital 
 
 ## ER Diagram:
-![ER Diagram](er_diagram.png)
+![ER Diagram](./DBMS%20Hospital%20Database.png)
 
 ## Entities and Attributes:
-- Entity1: Attributes
-- Entity2: Attributes
-...
+Medical Record: Diagnoses, Medication, Treatments, Test Result
+
+Hospital: Name, Address, Hospital ID, Contact No, Email ID
+
+Department: Department ID, Department Name, Department Head
+
+Doctor: Doctor ID, Full Name, Specialization, Email ID, Phone No
+
+Patient: Patient ID, Full Name, Date Of Birth, Gender, Phone No, Address, Email ID, Age
+
+Appointment: Appointment ID, Appointment Date, Appointment Time, Appointment Reason
+
 
 ## Relationships and Constraints:
-- Relationship1 (Cardinality, Participation)
-- Relationship2 (Cardinality, Participation)
-...
+Medical Record - Hospital (Maintain Electronic Record): One-to-One, Mandatory
 
-## Extension (Prerequisite / Billing):
-- Explain how you modeled prerequisites or billing.
+Hospital - Department (Consist): One-to-Many, Mandatory
+
+Hospital - Patient (Manage Information): One-to-Many, Mandatory
+
+Department - Doctor (Employee): One-to-Many, Mandatory
+
+Doctor - Work Schedule: One-to-One, Mandatory
+
+Doctor - Medical Consultation: One-to-Many, Mandatory
+
+Patient - Appointment (Schedule): One-to-Many, Mandatory
+
+Appointment - Medical Consultation: One-to-One, Mandatory
+
+## Extension (Billing):
+Billing are not explicitly modeled in the provided diagram. However, these could be integrated by adding a Billing entity with attributes such as Billing ID, Amount, and Payment Method. This entity would be linked to Patient and Appointment to capture relevant transactions.
 
 ## Design Choices:
-Brief explanation of why you chose certain entities, relationships, and assumptions
+* The entities were chosen based on common elements found in a hospital management system, ensuring comprehensive data management.
 
+* The relationships reflect real-world interactions, ensuring mandatory participation where necessary to maintain integrity.
+
+* Assumptions include that each hospital manages its own records, departments, doctors, and patients, and that appointments are scheduled and linked to consultations.
 ## RESULT
+The image represents a hospital management system with structured entities and relationships, ensuring efficient handling of medical records, scheduling, and consultations. This model ensures proper data flow and integrity within the system.
