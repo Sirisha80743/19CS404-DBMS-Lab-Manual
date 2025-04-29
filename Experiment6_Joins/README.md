@@ -163,7 +163,9 @@ Write the SQL query that achieves the selection of the first name from the "pati
 PATIENTS TABLE:
 
 ATTRIBUTES - patient_id, first_name, last_name, date_of_birth, admission_date, discharge_date, doctor_id
+
 ![alt text](image-4.png)
+
 DOCTORS TABLE:
 
 ATTRIBUTES - doctor_id, first_name, last_name, specialization
