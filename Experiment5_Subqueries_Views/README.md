@@ -357,6 +357,7 @@ WHERE
 ```
 
 **Output:**
+
 ![alt text](image-19.png)
 
 
